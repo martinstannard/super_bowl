@@ -28,10 +28,14 @@ defmodule SuperBowl.Team do
 
   defp update_score(state, inc_by) do
     # [g] - prettier way to write this?
-    {_, state} = Map.get_and_update state, :score, fn(score) ->
-      {score, score + inc_by}
-    end
-    state
+    
+    Map.update!(state, :score, &(&1 + inc_by))
+    
+    
+    #{_, state} = Map.get_and_update state, :score, fn(score) ->
+    #  {score, score + inc_by}
+    #end
+    #state
   end
 
 end
